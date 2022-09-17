@@ -1,0 +1,59 @@
+{
+  "name": "nestjs-surrealdb",
+  "license": "MIT",
+  "version": "0.1.1",
+  "exports": {
+    ".": {
+      "import": "./build/esm/mod.js",
+      "default": "./build/cjs/mod.js"
+    }
+  },
+  "main": "build/cjs/mod.js",
+  "types": "build/esm/mod.d.ts",
+  "files": [
+    "build"
+  ],
+  "scripts": {
+    "build": "run-p build:cjs build:esm",
+    "prebuild:cjs": "rimraf build/cjs",
+    "build:cjs": "yarn prebuild:cjs && tsc -p ./config/tsconfig.build.cjs.json && tsc-alias -p ./config/tsconfig.build.cjs.json && yarn postbuild:cjs",
+    "postbuild:cjs": "touch build/cjs/package.json && echo '{ \"type\": \"commonjs\" }' > build/cjs/package.json",
+    "prebuild:esm": "rimraf build/esm",
+    "build:esm": "yarn prebuild:esm && tsc -p ./config/tsconfig.build.esm.json && tsc-alias -p ./config/tsconfig.build.esm.json && yarn postbuild:esm",
+    "postbuild:esm": "touch build/esm/package.json && echo '{ \"type\": \"module\" }' > build/esm/package.json",
+    "lint": "run-p lint:eslint \"lint:prettier --check\"",
+    "lint:eslint": "eslint \"{src,config}/**/*.{js,ts}\"",
+    "lint:fix": "run-p \"lint:eslint --fix\" \"lint:prettier --write\"",
+    "lint:prettier": "prettier . \"!**/*.{js,ts}\""
+  },
+  "prettier": "./config/prettier.config.js",
+  "eslintConfig": {
+    "extends": "./config/eslint.config.js"
+  },
+  "lint-staged": {
+    "*.{ts,js}": "eslint --fix",
+    "*.{md,json}": "prettier --write"
+  },
+  "devDependencies": {
+    "@nestjs/common": "^9.0.11",
+    "@typescript-eslint/eslint-plugin": "^5.37.0",
+    "@typescript-eslint/parser": "^5.37.0",
+    "eslint": "^8.20.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "husky": "^8.0.1",
+    "lint-staged": "^13.0.3",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^2.7.1",
+    "rimraf": "3.0.2",
+    "source-map-support": "0.5.21",
+    "tsc-alias": "^1.7.0",
+    "typescript": "^4.7.4"
+  },
+  "dependencies": {
+    "surrealdb.js": "^0.3.1"
+  },
+  "peerDependencies": {
+    "@nestjs/common": "^9"
+  }
+}
