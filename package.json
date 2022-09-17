@@ -1,7 +1,7 @@
 {
   "name": "nestjs-surrealdb",
   "license": "MIT",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "exports": {
     ".": {
       "import": "./build/esm/mod.js",
@@ -55,5 +55,9 @@
   },
   "peerDependencies": {
     "@nestjs/common": "^9"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/trs/nestjs-surrealdb.git"
   }
 }
