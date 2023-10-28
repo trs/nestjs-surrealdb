@@ -14,7 +14,8 @@ import { SurrealDBService } from './surrealdb.service';
       inject: [MODULE_OPTIONS_TOKEN],
       useFactory: async (options: SurrealDBModuleOptions) => {
         const service = new SurrealDBService(options);
-        await service.connect();
+        await service.connect(options.url);
+        await service.signin(options.auth);
         return service;
       },
     },
