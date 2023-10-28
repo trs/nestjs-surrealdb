@@ -16,6 +16,7 @@ import { SurrealService } from './surreal.service';
         const service = new SurrealService();
         await service.connect(options.url);
         await service.signin(options.auth);
+        options.use && (await service.use(options.use.ns, options.use.db));
         return service;
       },
     },
