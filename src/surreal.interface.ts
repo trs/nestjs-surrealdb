@@ -1,6 +1,6 @@
 import { AuthenticationScope } from 'surrealdb.js';
 
-export interface SurrealDBModuleOptions {
+export interface SurrealModuleOptions {
   url: string;
   auth: AuthenticationScope;
 }

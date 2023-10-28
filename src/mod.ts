@@ -1,3 +1,3 @@
-export * from './surrealdb.interface';
-export * from './surrealdb.module';
-export * from './surrealdb.service';
+export * from './surreal.interface';
+export * from './surreal.module';
+export * from './surreal.service';

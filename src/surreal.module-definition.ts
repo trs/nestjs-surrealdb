@@ -1,12 +1,12 @@
 import { ConfigurableModuleBuilder } from '@nestjs/common';
-import { SurrealDBModuleOptions } from './surrealdb.interface';
+import { SurrealModuleOptions } from './surreal.interface';
 
 export const {
   ConfigurableModuleClass,
   MODULE_OPTIONS_TOKEN,
   OPTIONS_TYPE,
   ASYNC_OPTIONS_TYPE,
-} = new ConfigurableModuleBuilder<SurrealDBModuleOptions>()
+} = new ConfigurableModuleBuilder<SurrealModuleOptions>()
   .setExtras({ global: true }, (definition, extra) => ({
     ...definition,
     global: extra.global,
