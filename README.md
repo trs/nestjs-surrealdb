@@ -3,7 +3,7 @@
 ## Install
 
 ```sh
-npm install nestjs-surrealdb
+npm install nestjs-surrealdb surrealdb.js
 # or
-yarn add nestjs-surrealdb
+yarn add nestjs-surrealdb surrealdb.js
 ```
