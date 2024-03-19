@@ -12,11 +12,9 @@ import { SurrealService } from './surreal.service';
     {
       provide: SurrealService,
       inject: [MODULE_OPTIONS_TOKEN],
-      useFactory: async (options: SurrealModuleOptions) => {
+      useFactory: async ({ url, options }: SurrealModuleOptions) => {
         const service = new SurrealService();
-        await service.connect(options.url);
-        await service.signin(options.auth);
-        options.use && (await service.use(options.use.ns, options.use.db));
+        await service.connect(url, options);
         return service;
       },
     },
